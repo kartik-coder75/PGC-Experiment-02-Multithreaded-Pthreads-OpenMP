@@ -1,4 +1,4 @@
-## Experiment 1: Matrix Multiplication using Sequential, OpenMP, MPI and CUDA
+# Experiment 1: Matrix Multiplication using Sequential, OpenMP, MPI and CUDA
 
 This experiment implements matrix multiplication using four different computing approaches:
 
