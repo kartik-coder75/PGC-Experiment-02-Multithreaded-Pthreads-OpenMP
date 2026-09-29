@@ -1338,7 +1338,7 @@ Measured execution times: 2 threads = 0.715560 s, 4 threads = 0.360803 s, 6 thre
 | 6 | 0.241345 | 0.241608 |
 | 16 | 0.144812 | 0.140692 |
 
-![Figure 1: Execution Time vs Number of Threads](images/fig1_execution_time.png)
+<img width="851" height="504" alt="execution_time_comparison" src="https://github.com/user-attachments/assets/b8876ff2-795d-47c0-a4e6-cbdd9e62679a" />
 
 *Figure 1: Execution Time vs Number of Threads*
 
@@ -1375,7 +1375,7 @@ This means the measured 16-thread OpenMP execution completed the workload in rou
 | 6 | 5.608x | 5.601x |
 | 16 | 9.345x | 9.618x |
 
-![Figure 2: Speedup vs Number of Threads](images/fig2_speedup.png)
+<img width="851" height="504" alt="speedup_comparison" src="https://github.com/user-attachments/assets/849e5970-5aaf-4f5e-80b6-22ec91c91d2a" />
 
 *Figure 2: Speedup vs Number of Threads*
 
@@ -1415,7 +1415,7 @@ Efficiency = 9.62 / 16 x 100 ≈ 60.1%
 | 6 | 93.45% | 93.35% |
 | 16 | 58.40% | 60.11% |
 
-![Figure 3: Efficiency vs Number of Threads](images/fig3_efficiency.png)
+<img width="852" height="504" alt="efficiency_comparison" src="https://github.com/user-attachments/assets/8fcf8e92-bc13-4da9-8017-f0d5d64a76a7" />
 
 *Figure 3: Efficiency vs Number of Threads*
 
