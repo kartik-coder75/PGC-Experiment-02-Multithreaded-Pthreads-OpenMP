@@ -1,0 +1,115 @@
+================================================================================
+EXPERIMENT 02: PTHREADS AND OPENMP MULTITHREADING RUN LOGS
+Environment: Ubuntu (WSL) | Compiler: GCC 15.2.0 | Architecture: x86_64
+================================================================================
+
+[SETUP & ENVIRONMENT]
+$ gcc --version
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+$ gcc -fopenmp --version
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+
+--------------------------------------------------------------------------------
+PART A: PTHREADS EXECUTION OUTPUTS
+--------------------------------------------------------------------------------
+$ ./thread1
+Hello from the thread!
+Main thread finished.
+
+$ ./thread2
+Hello from Thread 1
+Hello from Thread 4
+Hello from Thread 3
+Hello from Thread 2
+All threads have finished.
+
+$ ./thread_sum
+Thread 1 calculated sum = 30
+Thread 3 calculated sum = 110
+Thread 4 calculated sum = 150
+Thread 2 calculated sum = 70
+Total sum = 360
+
+$ ./race (Run 1)
+Expected counter = 400000
+Actual counter   = 179154
+
+$ ./race (Run 2)
+Expected counter = 400000
+Actual counter   = 129732
+
+$ ./mutex
+Expected counter = 400000
+Actual counter   = 400000
+
+--------------------------------------------------------------------------------
+PART B: OPENMP EXECUTION OUTPUTS
+--------------------------------------------------------------------------------
+$ ./omp1
+Hello from Thread 13 of 16
+Hello from Thread 1 of 16
+Hello from Thread 9 of 16
+Hello from Thread 14 of 16
+Hello from Thread 0 of 16
+Hello from Thread 11 of 16
+Hello from Thread 2 of 16
+Hello from Thread 4 of 16
+Hello from Thread 6 of 16
+Hello from Thread 3 of 16
+Hello from Thread 15 of 16
+Hello from Thread 7 of 16
+Hello from Thread 8 of 16
+Hello from Thread 5 of 16
+Hello from Thread 12 of 16
+Hello from Thread 10 of 16
+
+$ ./omp_sum
+Thread 7 processing array[7] = 80
+Thread 5 processing array[5] = 60
+Thread 6 processing array[6] = 70
+Thread 4 processing array[4] = 50
+Thread 3 processing array[3] = 40
+Thread 0 processing array[0] = 10
+Thread 1 processing array[1] = 20
+Thread 2 processing array[2] = 30
+Total sum = 360
+
+$ ./omp_race
+Expected counter = 400000
+Actual counter   = 122322
+
+$ ./omp_critical
+Expected counter = 400000
+Actual counter   = 400000
+
+$ ./omp_barrier
+Thread 1 completed Stage 1
+Thread 3 completed Stage 1
+Thread 0 completed Stage 1
+Thread 2 completed Stage 1
+Thread 0 started Stage 2
+Thread 2 started Stage 2
+Thread 3 started Stage 2
+Thread 1 started Stage 2
+
+--------------------------------------------------------------------------------
+PART C: PERFORMANCE BENCHMARK OUTPUTS
+--------------------------------------------------------------------------------
+Sequential Baseline:
+$ ./sequential
+Result = 499999999500.00
+Execution time = 1.838037 seconds
+
+Pthreads Scaling:
+Threads = 1  | Time = 1.822517 s | Result = 499999999500.00
+Threads = 2  | Time = 0.933641 s | Result = 499999999500.00
+Threads = 4  | Time = 0.484443 s | Result = 499999999500.00
+Threads = 6  | Time = 0.412023 s | Result = 499999999500.00
+Threads = 16 | Time = 0.260299 s | Result = 499999999500.00
+
+OpenMP Scaling:
+Threads = 1  | Time = 1.827739 s | Result = 499999999500.00
+Threads = 2  | Time = 0.929209 s | Result = 499999999500.00
+Threads = 4  | Time = 0.486579 s | Result = 499999999500.00
+Threads = 6  | Time = 0.415275 s | Result = 499999999500.00
+Threads = 16 | Time = 0.231678 s | Result = 499999999500.00
