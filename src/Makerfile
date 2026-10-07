@@ -1,0 +1,52 @@
+CC = gcc
+CFLAGS = -Wall -O2
+PTHREAD_FLAGS = -pthread
+OMP_FLAGS = -fopenmp
+
+TARGETS = thread1 thread2 thread_sum race mutex pthread_perf \
+          omp1 omp_sum omp_race omp_critical omp_barrier omp_perf \
+          sequential
+
+all: $(TARGETS)
+
+thread1: thread1.c
+	$(CC) $(CFLAGS) $< -o $@ $(PTHREAD_FLAGS)
+
+thread2: thread2.c
+	$(CC) $(CFLAGS) $< -o $@ $(PTHREAD_FLAGS)
+
+thread_sum: thread_sum.c
+	$(CC) $(CFLAGS) $< -o $@ $(PTHREAD_FLAGS)
+
+race: race.c
+	$(CC) $(CFLAGS) $< -o $@ $(PTHREAD_FLAGS)
+
+mutex: mutex.c
+	$(CC) $(CFLAGS) $< -o $@ $(PTHREAD_FLAGS)
+
+pthread_perf: pthread_perf.c
+	$(CC) $(CFLAGS) $< -o $@ $(PTHREAD_FLAGS)
+
+omp1: omp1.c
+	$(CC) $(CFLAGS) $< -o $@ $(OMP_FLAGS)
+
+omp_sum: omp_sum.c
+	$(CC) $(CFLAGS) $< -o $@ $(OMP_FLAGS)
+
+omp_race: omp_race.c
+	$(CC) $(CFLAGS) $< -o $@ $(OMP_FLAGS)
+
+omp_critical: omp_critical.c
+	$(CC) $(CFLAGS) $< -o $@ $(OMP_FLAGS)
+
+omp_barrier: omp_barrier.c
+	$(CC) $(CFLAGS) $< -o $@ $(OMP_FLAGS)
+
+omp_perf: omp_perf.c
+	$(CC) $(CFLAGS) $< -o $@ $(OMP_FLAGS)
+
+sequential: sequential.c
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -f $(TARGETS)
